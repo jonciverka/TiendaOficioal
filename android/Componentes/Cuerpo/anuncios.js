@@ -6,7 +6,7 @@
 //-------detalles.
 //---------fotoUsuario.
 //---------NumeroTelefonico.
-//-------Productos.
+//-------Productos
 //---------Titulo.
 //-----------Precio.
 //-----------Lugar.
