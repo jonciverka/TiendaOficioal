@@ -4,7 +4,7 @@ Author & Contributor
 ------------------------
 Aviles Jonathan
 
-Elementos externo
+Elementos externos
 -----------------------
     *react-native
     *react-navigation
