@@ -28,7 +28,6 @@ Instalacion
 -------------
     $ clone this repo
     $ npm install
-    $ Install Netflix NodeJS & MongoDB
     $ react-native upgrade
-    $ react-native run-ios
+    $ react-native run-android
     
