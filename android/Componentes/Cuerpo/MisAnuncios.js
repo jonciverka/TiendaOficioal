@@ -11,7 +11,7 @@ import {
   Alert
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import {Button,Content,Container,ListItem,List,Card,Body,H3} from 'native-base'
+import {Button,Content,Container,ListItem,List,Card,Body,H3,Thumbnail,Rightpla} from 'native-base'
 import Helpers from '../lib/helpers'
 import * as firebase from 'firebase';
 export default class MisAnucios extends Component {
@@ -43,7 +43,6 @@ async componentWillMount(){
       }else{
         Alert.alert("no hay productos")
       }
-      Alert.alert("contenido", JSON.stringify(this.state.data))
     })
   }catch(error){
     Alert.alert("Error al sacar uid1")
@@ -51,15 +50,21 @@ async componentWillMount(){
 }
 renderRow(rowData){
   return (
-
-                  <View>
-                      <Text >{rowData.nombre}</Text>
-                      <Text>{rowData.precio}</Text>
-                      <Text>{rowData.lugar}</Text>
-                      <Text>{rowData.nota}</Text>
-                      <Text>{rowData.descripcion}</Text>
-                  </View>
-
+  <View>
+    <Content>
+          <List>
+            <ListItem style={styles.card}>
+              <Thumbnail square size={80} source={{ uri: 'Image URL' }} />
+              <Body>
+                <H3>{rowData.nombre}</H3>
+                <Text note style={styles.precio}>${rowData.precio}</Text>
+                <Text note>{rowData.Consola}</Text>
+                <Text note>{rowData.Estado}</Text>
+              </Body>
+            </ListItem>
+          </List>
+        </Content>
+  </View>
   )
 }
 
@@ -67,21 +72,20 @@ renderRow(rowData){
     return ( 
       <View style={{flex:1}}>
         <View style={styles.scroll}>
-      <ScrollView>          
-      <ListView
-        enableEmptySections={true}
-        renderRow={this.renderRow.bind(this)}
-        dataSource={this.state.dataSource}
-        />
-      
-    </ScrollView>
-    </View>
-          <View style={styles.centrar}>
-            <Button rounded block style={styles.boton}
-            onPress={()=> this.props.navigation.navigate("subirAnuncio")}>
-              <Text style = {{color : 'white'}}>Agregar Anuncio.</Text>
-            </Button> 
-          </View>
+          <ScrollView>          
+            <ListView
+            enableEmptySections={true}
+            renderRow={this.renderRow.bind(this)}
+            dataSource={this.state.dataSource}
+            />     
+          </ScrollView>
+        </View>
+        <View style={styles.centrar}>
+          <Button rounded block style={styles.boton}
+           onPress={()=> this.props.navigation.navigate("subirAnuncio")}>
+            <Text style = {{color : 'white'}}>Agregar Anuncio.</Text>
+          </Button> 
+        </View>
       </View>
     );
   }
@@ -91,7 +95,12 @@ const styles = StyleSheet.create({
     marginRight:70,
     marginLeft:70
   },
-  
+  precio:{
+    color:'#EA4335'
+  }, 
+  card:{    
+    backgroundColor:'white'
+  } ,
   centrar:{
     flex: 1,        
     flexDirection: 'column',
@@ -100,7 +109,8 @@ const styles = StyleSheet.create({
     backgroundColor:'white'
   },
   scroll:{
-    flex:11
+    flex:11,    
+    backgroundColor:'white'
   }
 })
 

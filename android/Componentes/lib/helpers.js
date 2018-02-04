@@ -34,14 +34,16 @@ import {
 
 
 class Helpers{
-    static setAll(userId,typedNombre,typedPrecio,typedLugar,typedDescribcion,typedNota){
+    static setAll(userId,typedNombre,typedPrecio,typedLugar,typedDescribcion,typedNota,selected2,selected3){
         let userNamePath ="/user/"+userId+"/productos"
         return firebase.database().ref(userNamePath).push().set({
             nombre:typedNombre,
             precio:typedPrecio,
             nota:typedNota,
             descripcion: typedDescribcion,
-            lugar:typedLugar
+            lugar:typedLugar,
+            Consola:selected2,
+            Estado:selected3
         })
     }
     

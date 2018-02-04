@@ -31,7 +31,7 @@ import {
   TouchableHighlight
 } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import {Button,Content,Container,Form,Item,Label,Input} from 'native-base'
+import {Button,Content,Container,Form,Item,Label,Input,Picker,Right,H3} from 'native-base'
 import EvilIcons from 'react-native-vector-icons/EvilIcons'
 import * as firebase from 'firebase';
 import Helpers from '../lib/helpers'
@@ -47,7 +47,19 @@ export default class subirAnuncio extends Component {
         uid:'',
         Key:'',
         get:'',
+        selected2: '',
+        selected3: ''
       }
+  }
+  onValueChange2(value) {
+    this.setState({
+      selected2: value
+    });
+  }
+  onValueChange3(value) {
+    this.setState({
+      selected3: value
+    });
   }
   async componentWillMount(){
     try{
@@ -76,7 +88,9 @@ export default class subirAnuncio extends Component {
         this.state.typedPrecio,
         this.state.typedLugar,
         this.state.typedDescription,
-        this.state.typedNota) : null
+        this.state.typedNota,
+        this.state.selected2,
+        this.state.selected3) : null
       Alert.alert("Articulo Agregado!")
     }catch(error){
       let errors = error.message
@@ -107,6 +121,19 @@ export default class subirAnuncio extends Component {
                 }
               }/>
             </Item>
+            <Picker
+                mode="dropdown"
+                placeholder="Consola"
+                selectedValue={this.state.selected2}
+                onValueChange={this.onValueChange2.bind(this)}
+              >
+                <Item label="Xbox One" value="XboxOne" />
+                <Item label="PS4" value="PS4" />
+                <Item label="Switch" value="Switch" />
+                <Item label="PS3" value="PS3" />
+                <Item label="Xbox 360" value="Xbox360" />
+                
+              </Picker>
             <Item inlineLabel last>
               <Label>Precio:</Label>
               <Input onChangeText={
@@ -124,6 +151,15 @@ export default class subirAnuncio extends Component {
                 }
               }/>
             </Item>
+            <Picker
+                mode="dropdown"
+                placeholder="Estado"
+                selectedValue={this.state.selected3}
+                onValueChange={this.onValueChange3.bind(this)}
+              >
+                <Item label="Nuevo" value="Nuevo" />
+                <Item label="Usado" value="Usado" />
+              </Picker>
             <Item inlineLabel last>
               <Label>Nota(detalles visibles):</Label>
               <Input onChangeText={
