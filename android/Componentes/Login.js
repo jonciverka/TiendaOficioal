@@ -87,7 +87,7 @@ export default class Login extends Component {
           <Button
           onPress={this.Login} 
           block primary>
-            <Text style = {{color : 'white'}}>Iniciarrr.</Text>
+            <Text style = {{color : 'white'}}>Iniciarddrr.</Text>
           </Button> 
           <Button 
           onPress={this.Registro}
