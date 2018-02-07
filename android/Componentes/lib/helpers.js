@@ -51,11 +51,14 @@ class Helpers{
         let userNamePath = "/user/"+userId
         firebase.database().ref(userNamePath).on('value',(snapshot)=>{
             let data = snapshot.val()        
-            if(snapshot){
+            if(data){
                let obj = {
                    productos : data.productos
                }
                callback(obj)
+            }
+            else{
+                callback()
             }
             
         })
@@ -68,18 +71,17 @@ class Helpers{
             if(data){
                 for(let key in data){
                     let obj = data[key]
-                    let name = obj.details.name
-
                     for(let prop in obj){
                         let Products = obj[prop]
                         for(let rc in Products){
                             if(Products[rc].descripcion && Products[rc].lugar && Products[rc].nombre && Products[rc].nota && Products[rc].precio){
                                 arrayOfProducts.push({
-                                    userName : name,
                                     Shownombre : Products[rc].nombre,
                                     Showprecio : Products[rc].precio,
                                     Shownota : Products[rc].nota,
                                     Showlugar : Products[rc].lugar,
+                                    ShowConsola : Products[rc].Estado,
+                                    ShowEstado: Products[rc].Consola,
                                     Showdescripcion : Products[rc].descripcion
                                 })
                             }
