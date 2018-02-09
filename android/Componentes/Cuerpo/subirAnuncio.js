@@ -67,7 +67,7 @@ export default class subirAnuncio extends Component {
       this.setState({
         uid: user.uid,        
       })
-      Alert.alert("udi bien!")
+     // Alert.alert("udi bien!")
     }catch(error){
       Alert.alert("Error al sacar uid2")
     }
@@ -97,16 +97,28 @@ export default class subirAnuncio extends Component {
       Alert.alert("error",`${errors}`)
     }
   }
-  static navigationOptions ={
-    title:"Subir Anuncio.",
+
+  
+
+
+  static navigationOptions = ({ navigation }) => {
+    const { params = {} } = navigation.state;
+    return {
+      title:"Subir Anuncio.",
     headerTitleStyle:{
       color:"white"
     },
     headerStyle :{
       backgroundColor:"#4285F4",
     },
-    headerRight: <Button onPress={this.saveForm} ><Text>Enviar</Text></Button>
-  }
+      headerRight: <Button transparent onPress={() =>params.handleSave()} ><EvilIcons name="sc-telegram" size={34}  style={{color: 'white'}}/></Button>
+    };
+};
+
+
+componentDidMount() {
+  this.props.navigation.setParams({ handleSave: this.saveForm });
+}
   
 
   render() {
@@ -179,12 +191,6 @@ export default class subirAnuncio extends Component {
                 numberOfLines={10}/>
             </Item>
           </Form>
-          <Button 
-          onPress={this.saveForm}>
-          <Text>
-            hola
-            </Text>
-            </Button>
       </ScrollView>
     );
   }

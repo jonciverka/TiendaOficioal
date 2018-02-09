@@ -6,7 +6,7 @@ import {
   StyleSheet,
   Text,
   View,
-  Alert
+  Alert,Image, Dimensions
 } from 'react-native';
 import * as firebase from 'firebase';
 import {Button,Content,Container,Item,Form,Input,Card,CardItem,Body} from 'native-base'
@@ -57,8 +57,10 @@ export default class Login extends Component {
     }
   render() {
     return (
-        <Container>       
+        <Container>
+              
         <View style = {styles.formu}>
+        <Image style={styles.Img} source={require('../Img/Logo.png')}/>  
         <View  style = {styles.anchoCard}>
           <Form >
             <Item>
@@ -68,7 +70,7 @@ export default class Login extends Component {
                   this.setState({Email:text})
                 }
               }
-              placeholder="Username" />
+              placeholder="Correo" />
             </Item>
             <Item last>
               <Input 
@@ -78,7 +80,7 @@ export default class Login extends Component {
                   this.setState({Password:text})
                 }
               }
-              placeholder="Password" />
+              placeholder="Contraseña" />
             </Item>
           </Form>
           </View>
@@ -99,12 +101,17 @@ export default class Login extends Component {
     );
   }
 }
+var {width} = Dimensions.get('window')
 const styles = StyleSheet.create({
     anchoCard:{
         width:300,
     }, 
     anchoBoton:{
         width:300,
+    },
+    Img :{
+      width: width * .7,
+      height : 60
     },
     Boton:{
         flex: 1,        
