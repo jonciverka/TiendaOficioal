@@ -26,7 +26,7 @@ import {
   StyleSheet,
   Text,
   View,
-  ListView,ScrollView
+  ListView,ScrollView, TouchableNativeFeedback,Alert,TouchableOpacity,TouchableWithoutFeedback
 } from 'react-native';
 import {Button,Content,Container,ListItem,List,Card,Body,H3,Thumbnail,Rightpla} from 'native-base'
 import { TabNavigator } from 'react-navigation';
@@ -75,7 +75,9 @@ class anuncios extends Component {
 renderRow(rowData){
   return (
   <View>
+    <TouchableOpacity onPress={()=>this.props.navigation.navigate('articulo',{data: rowData})}>
     <Content>
+     
           <List>
             <ListItem style={styles.card}>
               <Thumbnail square size={80} source={{ uri: 'Image URL' }} />
@@ -87,7 +89,9 @@ renderRow(rowData){
               </Body>
             </ListItem>
           </List>
+         
         </Content>
+   </TouchableOpacity  >
   </View>
   )
 }

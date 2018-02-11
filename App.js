@@ -16,7 +16,7 @@ import Login from './android/Componentes/Login'
 import Index from './android/Componentes/Cuerpo/Index'
 import subirAnuncio from './android/Componentes/Cuerpo/subirAnuncio'
 import MisAnuncios from './android/Componentes/Cuerpo/MisAnuncios'
-//import registro from './android/Componentes/registro'
+import articulo from './android/Componentes/Cuerpo/Articulo'
 
 const RootNavigator = StackNavigator({
     Login :{screen:Login},
@@ -24,7 +24,7 @@ const RootNavigator = StackNavigator({
       navigationOptions:{
         header: null,
     }},
-  //  registro:{screen:registro},
+    articulo:{screen:articulo},
     subirAnuncio : {screen: subirAnuncio},
     MisAnuncios : {screen: MisAnuncios},
 
