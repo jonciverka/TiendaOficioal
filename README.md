@@ -22,6 +22,8 @@ Instalar cada Elemento externo
         npm install react-native-vector-icons --save
     *Firebase  
         npm install --save firebase
+    *Camara
+        npm install react-native-image-picker@latest --save
 
 
 Instalacion
