@@ -70,7 +70,7 @@ export default class Login extends Component {
                   this.setState({Email:text})
                 }
               }
-              placeholder="Correo" />
+              placeholder="Corrrreo" />
             </Item>
             <Item last>
               <Input 
