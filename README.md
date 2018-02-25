@@ -1,6 +1,6 @@
 TIENDAOFICIAL
 ========================
-Author & Contributor
+Author & Contributorsss
 ------------------------
 Aviles Jonathan
 
